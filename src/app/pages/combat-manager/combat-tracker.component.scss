@@ -1,0 +1,51 @@
+@import '../../styles/utils/colors';
+
+mat-table {
+  width: 100%;
+
+  mat-row.detail-row {
+
+    &.collapsed {
+      min-height: 0;
+      border-bottom: 0;
+    }
+  }
+
+  mat-row.character-row:not(.expanded-row):hover {
+    background: $gray-75;
+  }
+
+  .character-row mat-cell {
+    border-bottom-width: 0;
+  }
+
+  .character-detail {
+    overflow: hidden;
+    display: contents;
+  }
+
+}
+
+mat-header-cell, mat-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.character-description {
+  width: 100%;
+}
+
+.delete {
+  cursor: pointer;
+  color: $fx-error-red;
+}
+
+.button-row {
+  margin-top: 2rem;
+}
+
+.character-form {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+}

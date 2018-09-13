@@ -1,0 +1,81 @@
+@import '../utils/button';
+
+button[edl] {
+  @include button-base();
+  @include button-size();
+}
+
+button[edl][extra-large] {
+  @include button-size("xlarge");
+}
+
+button[edl][medium] {
+  @include button-size("medium");
+}
+
+button[edl][small] {
+  @include button-size("small");
+}
+
+button[edl][text-tiny] {
+  @include button-size("tiny");
+}
+
+button[edl][primary] {
+  @include button-primary();
+}
+
+button[edl][tertiary] {
+  @include button-tertiary();
+}
+
+button[edl][text] {
+  @include button-text();
+}
+
+button[edl][text-light] {
+  @include button-text("text-light");
+}
+
+button[edl][disabled] {
+  @include button-disabled();
+}
+
+button[edl][text][disabled] {
+  @include button-text-disabled();
+}
+
+button[edl][text-light][disabled] {
+  @include button-text-disabled();
+}
+
+button[edl][text-tiny] {
+  @include button-text-tiny();
+}
+
+button[edl][icon] {
+  display: inline-flex;
+  padding: 1.25rem 1.5rem;
+  vertical-align: bottom;
+
+  &[icon-right] {
+    padding-right: .5rem;
+  }
+
+  &[icon-left] {
+    padding-left: .5rem;
+  }
+
+  edl-icon {
+    margin: 0 .5rem;
+  }
+}
+
+button[edl][icon][icon-only] {
+  padding: 1.25rem 1.25rem;
+
+  edl-icon {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}

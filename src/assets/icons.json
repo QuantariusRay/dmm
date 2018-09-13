@@ -1,0 +1,16 @@
+{
+  "icons": [
+    {
+      "condition": "asleep",
+      "label": "asleep",
+      "iconName": "alarm",
+      "active": false
+    },
+    {
+      "condition": "delayed",
+      "label": "delay",
+      "iconName": "hourglass_empty",
+      "active": false
+    }
+  ]
+}

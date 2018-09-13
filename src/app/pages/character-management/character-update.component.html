@@ -1,0 +1,92 @@
+<div *ngIf="character$ | async as character">
+  <h2> {{ character.name }}</h2>
+
+  <mat-tab-group class="form">
+    <mat-tab label="Stats" >
+      <form #characterForm="ngForm" class="row">
+
+        <div class="--character-class col col-7">
+          <mat-form-field class="--character">
+            <mat-label>Character Name</mat-label>
+            <input matInput [(ngModel)]="character.name" name="name">
+          </mat-form-field>
+
+          <div class="row">
+
+            <ng-container *ngFor="let characterClass of character.classes; let i = index" ngModelGroup="classes">
+              <div class="--class" ngModelGroup="{{i}}">
+                <mat-form-field class="col col-4">
+                  <mat-select placeholder="Character Class" [(ngModel)]="characterClass.class" name="class">
+                    <mat-option *ngFor="let class of classes" [value]="class.className">
+                      {{ class.key }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="col col-2">
+                  <mat-label>Level</mat-label>
+                  <input matInput [(ngModel)]="characterClass.classLevel" name="classLevel">
+                </mat-form-field>
+
+                <div class="col col-2">
+                  <label>BAB</label>
+                  <!--<span>{{ classes['Envoy'].loadout[characterClass.classLevel].bab }}</span>-->
+                </div>
+              </div>
+            </ng-container>
+
+          </div>
+        </div>
+
+        <div class="col col-5 --bio">
+          <mat-form-field class="--race col">
+            <mat-label>Race</mat-label>
+            <input matInput [(ngModel)]="character.race" name="race">
+          </mat-form-field>
+
+          <mat-form-field class="--theme col">
+            <mat-label>Theme</mat-label>
+            <input matInput [(ngModel)]="character.theme" name="theme">
+          </mat-form-field>
+
+          <mat-form-field class="--theme col col-5">
+            <mat-label>Homeworld</mat-label>
+            <input matInput [(ngModel)]="character.home" name="home">
+          </mat-form-field>
+
+          <mat-form-field class="--theme col col-5">
+            <mat-label>Size</mat-label>
+            <input matInput [(ngModel)]="character.size" name="size">
+          </mat-form-field>
+
+          <mat-form-field class="--theme col col-2">
+            <mat-label>Gender</mat-label>
+            <input matInput [(ngModel)]="character.gender" name="gender">
+          </mat-form-field>
+
+          <mat-form-field class="--theme col col-5">
+            <mat-label>Speed</mat-label>
+            <input matInput [(ngModel)]="character.speed" name="speed">
+          </mat-form-field>
+
+          <mat-form-field class="--theme col col-2">
+            <mat-label>Alignment</mat-label>
+            <input matInput [(ngModel)]="character.alignment" name="alignment">
+          </mat-form-field>
+
+          <mat-form-field class="--theme col col-5">
+            <mat-label>Deity</mat-label>
+            <input matInput [(ngModel)]="character.deity" name="deity">
+          </mat-form-field>
+        </div>
+
+      </form>
+
+    </mat-tab>
+
+
+  </mat-tab-group>
+
+  <button (click)="updateCharacter(character)">Save</button>
+
+</div>

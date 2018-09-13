@@ -1,0 +1,38 @@
+.edl-layout {
+  display: flex;
+}
+
+.edl-layout.horizontal {
+  flex-direction: row;
+}
+
+.edl-layout.vertical {
+  flex-direction: column;
+}
+
+.edl-layout.wrap {
+  flex-wrap: wrap;
+}
+
+.edl-layout.center,
+.edl-layout.center-center {
+  align-items: center;
+}
+
+.edl-layout.center-justified,
+.edl-layout.center-center {
+  justify-content: center;
+}
+
+.edl-flex {
+  flex: 1;
+  flex-basis: 0.000000001px;
+}
+
+.edl-flex-auto {
+  flex: 1 1 auto;
+}
+
+.edl-flex-none {
+  flex: none;
+}

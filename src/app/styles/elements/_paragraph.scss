@@ -1,0 +1,22 @@
+@import '../utils/typography';
+@import '../utils/link';
+
+p {
+  @include text-level("body");
+
+  & > a {
+    @include link();
+  }
+}
+
+.large-body {
+  @include text-level("large-body");
+}
+
+.small-body {
+  @include text-level("small-body");
+}
+
+i, em {
+  font-style: italic;
+}

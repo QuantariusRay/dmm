@@ -1,0 +1,22 @@
+<ng-container *ngIf="!(authService.user$ | async)?.uid">
+  <div class="display-title">Login to DMM</div>
+
+  <form novalidate [formGroup]="loginForm" class="form-group">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" placeholder="Password">
+    </mat-form-field>
+    <ng-container *ngIf="!(authService.user$ | async)?.uid">
+      <button md-button mat-stroked-button color="primary" (click)="authService.emailLogin(loginForm.value)">Login</button>
+    </ng-container>
+  </form>
+
+  <div class="button-group">
+    <app-google-button (click)="authService.googleLogin()"></app-google-button>
+  </div>
+</ng-container>

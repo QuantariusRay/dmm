@@ -1,0 +1,17 @@
+@import './colors';
+
+@mixin link() {
+  color: $fx-blue;
+
+  &:hover {
+    color: $fx-blue-hover;
+  }
+
+  &:focus {
+    color: $fx-blue;
+  }
+
+  &:active {
+    color: $fx-blue-pressed;
+  }
+}

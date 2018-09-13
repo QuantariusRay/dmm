@@ -1,0 +1,104 @@
+@import './colors';
+@import './typography';
+
+:host {
+  margin: 10px 0;
+  width: 36rem;
+}
+
+input, label {
+  display: block;
+}
+
+label {
+  font-size: 1.5rem;
+  letter-spacing: .75px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: $gray-42;
+
+  &.float-label {
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 1.2;
+    letter-spacing: 0.5px;
+    color: $gray-42;
+    position: absolute;
+    padding: 1.25rem 1.5rem;
+    opacity: 0;
+  }
+
+  &.active {
+    @include transition(opacity, 100ms, $easeInQuad);
+    opacity: 1;
+  }
+}
+
+input {
+  @include text-level('body');
+  margin: 0;
+  color: $gray-28;
+  height: 6rem;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  width: 100%;
+  border: 1px solid $gray-75;
+  background-color: $white;
+
+  &:focus {
+    outline: none;
+    border: $fx-purple solid 1px;
+    caret-color: $fx-purple;
+  }
+}
+
+:host([disabled]) {
+  cursor: default;
+  pointer-events: none;
+
+  input {
+    border: 0;
+    color: $gray-75;
+    background-color: $gray-95;
+  }
+
+  label {
+    color: $gray-75;
+  }
+}
+
+:host([readonly]) {
+  cursor: default;
+  pointer-events: none;
+
+  label {
+    color: $gray-75;
+  }
+}
+
+:host(.ng-invalid.ng-touched, .ng-invalid.ng-dirty) {
+
+  input {
+    outline: none;
+    border: $fx-error-red solid 1px;
+  }
+}
+
+:host(.has-success.ng-valid) {
+
+  input {
+    outline: none;
+    border: $fx-success-green solid 1px;
+  }
+}
+
+:host(.has-placeholder) {
+
+  input {
+    height: 7rem;
+    padding: 3rem 0 3rem 1.5rem;
+
+    &.active {
+      padding-bottom: 1.5rem;
+    }
+  }
+}

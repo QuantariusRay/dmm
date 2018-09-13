@@ -1,0 +1,122 @@
+// Design Foundation: Color
+
+// Color Steps (all maps are light to dark)
+
+$purple-levels: (
+  500: #4d148c
+);
+
+$orange-levels: (
+  500: #ff6200,
+  600: #f25100,
+  700: #e64d00
+);
+
+$white-orange-levels: (
+  100: #fff7f2,
+  200: #ffefe5
+);
+
+$blue-levels: (
+  300: #b2d6e8,
+  500: #0078b4,
+  600: #00689c,
+  700: #005f8f
+);
+
+$blue-outline-levels: (
+  500: #7fbbd9
+);
+
+$blue-levels-alpha: (
+  100: rgba(0, 120, 180, 0.05),
+  200: rgba(0, 120, 180, 0.1)
+);
+
+$gold-levels: (
+  100: #fef9ed,
+  500: #f7b118,
+  900: #960
+);
+
+$green-levels: (
+  100: #ebf6eb,
+  500: #008200
+);
+
+$red-levels: (
+  100: #feebef,
+  500: #db002c,
+  700: #e3002d
+);
+
+$gray-levels: (
+  0: #fff,
+  100: #f7f9fa,
+  200: #ebf0f2,
+  300: #dce2e6,
+  350: #ced5d9,
+  400: #aab9bf,
+  600: #6f7f87,
+  700: #54646b,
+  800: #2f4047,
+  900: #121e24
+);
+
+$dark-opacity-levels: (
+  30: rgba(0, 0, 0, 0.3)
+);
+
+$white-opacity-levels: (
+  30: rgba(255, 255, 255, 0.3),
+  80: rgba(255, 255, 255, 0.8),
+  90: rgba(255, 255, 255, 0.9)
+);
+
+// Color names
+
+$fx-purple: map-get($purple-levels, 500);
+
+$fx-orange: map-get($orange-levels, 500);
+$fx-orange-hover: map-get($orange-levels, 600);
+$fx-orange-pressed: map-get($orange-levels, 700);
+
+$fx-white-hover: map-get($white-orange-levels, 100);
+$fx-white-pressed: map-get($white-orange-levels, 200);
+
+$fx-blue-focus: map-get($blue-levels, 300);
+$fx-blue: map-get($blue-levels, 500);
+$fx-blue-hover: map-get($blue-levels, 600);
+$fx-blue-bg-hover: map-get($blue-levels-alpha, 100);
+$fx-blue-pressed: map-get($blue-levels, 700);
+$fx-blue-bg-pressed: map-get($blue-levels-alpha, 200);
+
+$fx-success-green-bg: map-get($green-levels, 100);
+$fx-success-green: map-get($green-levels, 500);
+
+$fx-error-red-bg: map-get($red-levels, 100);
+$fx-error-red: map-get($red-levels, 500);
+$fx-high-priority-red: map-get($red-levels, 700);
+
+$fx-warning-gold-bg: map-get($gold-levels, 100);
+$fx-warning-gold: map-get($gold-levels, 500);
+$fx-warning-bronze: map-get($gold-levels, 900); // text only
+
+$white: map-get($gray-levels, 0);
+$gray-98: map-get($gray-levels, 100);
+$gray-95: map-get($gray-levels, 200);
+$gray-90: map-get($gray-levels, 300);
+$gray-85: map-get($gray-levels, 350);
+$gray-75: map-get($gray-levels, 400);
+$gray-53: map-get($gray-levels, 600);
+$gray-42: map-get($gray-levels, 700);
+$gray-28: map-get($gray-levels, 800);
+$gray-14: map-get($gray-levels, 900);
+
+$dark-30: map-get($dark-opacity-levels, 30);
+
+$white-30: map-get($white-opacity-levels, 30);
+$white-80: map-get($white-opacity-levels, 80);
+$white-90: map-get($white-opacity-levels, 90);
+
+$blue-outline: map-get($blue-outline-levels, 500);

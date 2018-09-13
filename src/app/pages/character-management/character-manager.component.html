@@ -1,0 +1,12 @@
+<h2>Character Manager</h2>
+
+<mat-card *ngFor="let character of characters">
+  <div class="contents">
+    <span> {{ character.name }}</span>
+    <button mat-button color="primary" [routerLink]="['/character', character.key]">Edit</button>
+  </div>
+</mat-card>
+
+<button mat-icon-button [routerLink]="['/character/new']" color="primary">
+  <mat-icon>add</mat-icon>
+</button>

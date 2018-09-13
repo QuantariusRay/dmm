@@ -1,0 +1,49 @@
+@import '../utils/typography';
+
+li {
+  font-size: map-get($type-size-steps, "list-item");
+  font-weight: map-get($font-weight-steps, "list-item");
+  line-height: map-get($line-height-steps, "list-item");
+  margin-top: map-get($font-margin-top-steps, "list-item");
+  margin-bottom: map-get($font-margin-bottom-steps, "list-item");
+  color: $gray-28;
+}
+
+ol, ul {
+  padding-left: 2rem;
+  margin-left: 1rem;
+}
+
+ol ol, ul ul {
+  padding-left: 2rem;
+  margin-left: 2rem;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  list-style-type: none;
+}
+
+li a {
+  color: $fx-blue;
+
+  &:hover {
+    color: $fx-blue-hover;
+  }
+
+  &:focus {
+    color: $fx-blue;
+  }
+
+  &:active {
+    color: $fx-blue-pressed;
+  }
+}

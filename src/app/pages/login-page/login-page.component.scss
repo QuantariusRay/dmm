@@ -1,0 +1,21 @@
+.display-title {
+  text-align: center;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 8rem auto 4rem;
+
+  /deep/ .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}

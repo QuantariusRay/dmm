@@ -1,0 +1,33 @@
+@import '../utils/typography';
+
+h1 {
+  @include text-level('h1');
+}
+
+h2 {
+  @include text-level('h2');
+}
+
+h3 {
+  @include text-level('h3');
+}
+
+h4 {
+  @include text-level('h4');
+}
+
+.display-title {
+  @include text-level('title');
+}
+
+.eyebrow {
+  @include text-level('eyebrow');
+}
+
+.eyebrow-small {
+  @include text-level('eyebrow-small');
+}
+
+.caption {
+  @include text-level('caption');
+}

@@ -1,0 +1,27 @@
+@import '../../styles/utils/colors';
+@import '../../styles/utils/typography';
+
+:host {
+  display: flex;
+  width: 100%;
+}
+
+label {
+  font-weight: 500;
+}
+
+.conditions {
+  @include text-level('input-label');
+  border-left: 1px solid $gray-98;
+}
+
+.stat-row {
+  display: flex;
+  margin: .5rem 0;
+}
+
+.number-sm {
+  width: 8rem;
+  margin-left: 1rem;
+  border: 1px solid $gray-53;
+}

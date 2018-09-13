@@ -1,0 +1,147 @@
+// type sizing levels
+$type-size-steps: (
+  "title": 9rem,
+  "h1": 4rem,
+  "h2": 3rem,
+  "h3": 2.5rem,
+  "h4": 2rem,
+  "body": 2rem,
+  "small-body": 1.75rem,
+  "large-body": 2.25rem,
+  "caption": 1.5rem,
+  "eyebrow": 2rem,
+  "eyebrow-small": 1.75rem,
+  "button": 2rem,
+  "button-small": 1.75rem,
+  "button-text": 2rem,
+  "button-text-small": 1.75rem,
+  "input-label": 1.5rem,
+  "list-item": 2.25rem
+  ) !default;
+
+// line-height steps
+$line-height-steps: (
+  "title": 10rem,
+  "h1": 5rem,
+  "h2": 4rem,
+  "h3": 4rem,
+  "h4": 4rem,
+  "body": 3rem,
+  "small-body": 3rem,
+  "large-body": 4rem,
+  "caption": 2rem,
+  "eyebrow": 3rem,
+  "eyebrow-small": 3rem,
+  "button": 3rem,
+  "button-small": 3rem,
+  "button-text": 3rem,
+  "button-text-small": 3rem,
+  "input-label": 1.75rem,
+  "list-item": 4rem
+  ) !default;
+
+$font-weight-steps: (
+  "title": 300,
+  "h1": 300,
+  "h2": 300,
+  "h3": 300,
+  "h4": 300,
+  "body": 300,
+  "small-body": 400,
+  "large-body": 300,
+  "caption": 400,
+  "eyebrow": 700,
+  "eyebrow-small": 700,
+  "button": 700,
+  "button-small": 700,
+  "button-text": 700,
+  "button-text-small": 700,
+  "input-label": 700,
+  "list-item": 300
+  ) !default;
+
+$font-margin-top-steps: (
+  "title": 1em,
+  "h1": 1em,
+  "h2": 1em,
+  "h3": 1em,
+  "h4": 1em,
+  "body": 1em,
+  "small-body": 1em,
+  "large-body": 1em,
+  "caption": 1em,
+  "eyebrow": 1em,
+  "eyebrow-small": 1em,
+  "button": 0,
+  "button-small": 0,
+  "button-text": 0,
+  "button-text-small": 0,
+  "input-label": 0
+  ) !default;
+
+$font-margin-bottom-steps: (
+  "title": 0,
+  "h1": 0.5em,
+  "h2": 0.5em,
+  "h3": 0.5em,
+  "h4": 0,
+  "body": 1em,
+  "small-body": 0,
+  "large-body": 0,
+  "caption": 0,
+  "eyebrow": 0,
+  "eyebrow-small": 0,
+  "button": 0,
+  "button-small": 0,
+  "button-text": 0,
+  "button-text-small": 0,
+  "input-label": 0,
+  "list-item": 0
+  ) !default;
+
+// text transform steps
+// for those levels that need it
+$text-transform-steps: (
+  "eyebrow": uppercase,
+  "eyebrow-small": uppercase,
+  "button": uppercase,
+  "button-small": uppercase,
+  "button-text": uppercase,
+  "button-text-small": uppercase,
+  "input-label": uppercase
+) !default;
+
+// font size breakpoint for headers above 600px
+$header-breakpoints: (
+  "h1": 6rem,
+  "h2": 4rem,
+  "h3": 3rem,
+);
+
+$header-lineHeights: (
+  "h1": 8rem,
+  "h2": 5rem,
+);
+
+@mixin text-level ($size: 'body') {
+  font-size: map-get($type-size-steps, $size);
+  line-height: map-get($line-height-steps, $size);
+  font-weight: map-get($font-weight-steps, $size);
+  margin-top: map-get($font-margin-top-steps, $size);
+  margin-bottom: map-get($font-margin-bottom-steps, $size);
+
+  $transform-exists: map-has-key($text-transform-steps, $size);
+
+  @if $transform-exists == true {
+    text-transform: map-get($text-transform-steps, $size);
+  }
+
+  $text-is-header: map-has-key($header-breakpoints, $size);
+
+  @if $text-is-header == true {
+    @media (min-width: 1024px) {
+      font-size: map-get($header-breakpoints, $size);
+      line-height: map-get($header-lineHeights, $size);
+    }
+  }
+}

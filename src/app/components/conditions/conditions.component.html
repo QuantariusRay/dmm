@@ -1,0 +1,41 @@
+<div class="col col-6">
+  <div class="stat-row">
+    <div class="col col-6 ">
+      <label>Name:</label> {{ participant.characterName }}
+    </div>
+    <div class="col col-6">
+      <label>Initiative:</label> {{ participant.initiative }}
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="col col-6">
+      <label>HP:</label><input class="number-sm" type="number" matInput>
+    </div>
+    <div class="col col-6">
+      <label>Max HP:</label><input class="number-sm" type="number" matInput>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="col">
+      <label>Fort:</label><input class="number-sm" type="number" matInput>
+    </div>
+    <div class="col">
+      <label>Ref:</label><input class="number-sm" type="number" matInput>
+    </div>
+    <div class="col">
+      <label>Will:</label><input class="number-sm" type="number" matInput>
+    </div>
+  </div>
+</div>
+
+<div class="col col-6 conditions">
+  <div>Add Condition:</div>
+  <button mat-icon-button
+          *ngFor="let condition of icons"
+          (click)="applyCondition(condition)"
+          [matTooltip]="condition.label">
+    <mat-icon [attr.aria-label]="condition.label">{{ condition.iconName }}</mat-icon>
+  </button>
+</div>

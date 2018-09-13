@@ -1,0 +1,14 @@
+$z-index-levels: (
+  -1: -1,
+  0: auto, // min, unused
+  0.1: 1, // float label
+  0.5: 5, // tooltip
+  1: 50, // dropdowns
+  5: 150, // top nav header
+  90: 9000, // modal
+  100: 9999 // max, unused
+);
+
+@mixin z-level($level: 1) {
+  z-index: map-get($z-index-levels, $level);
+}
