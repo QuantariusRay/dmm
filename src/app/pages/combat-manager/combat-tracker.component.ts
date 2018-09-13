@@ -65,8 +65,8 @@ export class CombatTrackerComponent implements OnInit {
   ngOnInit() {
     this.characterForm = this.formBuild.group({
       characterName: ['', Validators.required],
-      initiativeBonus: ['', Validators.required],
-      initiative: [''],
+      initiativeBonus: [0, Validators.required],
+      initiative: [0],
     });
   }
 
@@ -136,8 +136,8 @@ export class CombatTrackerComponent implements OnInit {
     this.table.renderRows();
     this._cd.detectChanges();
     this.characterForm.reset({
-      initiative: '',
-      initiativeBonus: ''
+      initiative: 0,
+      initiativeBonus: 0
     });
   }
 
