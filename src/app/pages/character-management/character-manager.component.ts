@@ -4,7 +4,7 @@ import {
   AngularFireList,
   AngularFireObject
 }                            from 'angularfire2/database';
-import { Character }         from '../../character';
+import { Character }         from '../../interfaces/character';
 import { Observable }        from 'rxjs/index';
 import { map }               from 'rxjs/internal/operators';
 

@@ -6,8 +6,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## 0.0.1-alpha.01 - 2018-09-20
+
+### Added
+- Character Sheet
+  * Added more values.
+  
+- Combat Tracker
+  * Added delete functionality on each character panel
+  * Added delay table.
+
 ### Changed
-* Set the character initiative and bonus to 0 on form.
+- Set the character initiative and bonus to 0 on form.
 
 ## 0.0.1-alpha.01 - 2018-09-12
 

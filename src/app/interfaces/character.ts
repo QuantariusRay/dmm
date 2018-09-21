@@ -1,9 +1,10 @@
 export interface Character {
-  key: string;
+  key?: string;
   name: string;
   classes: {
-    class: number;
-  };
+    class: string,
+    classLevel: string
+  }[];
   race: string;
   home: string;
   theme: string;

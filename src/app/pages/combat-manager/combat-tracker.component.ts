@@ -11,24 +11,25 @@ import {
   FormBuilder,
   FormGroup,
   Validators
-} from '@angular/forms';
+}                    from '@angular/forms';
 import {
   MatTable,
-} from '@angular/material';
+}                    from '@angular/material';
 import {
   animate,
   state,
   style,
   transition,
   trigger
-}                   from '@angular/animations';
+}                    from '@angular/animations';
+import { Condition } from '../../interfaces/condition';
 
 
 export interface Participant extends Element {
   characterName: string;
   initiative: number;
   initiativeBonus: string;
-  conditions?: string[];
+  conditions?: Condition[];
 }
 
 @Component({
@@ -47,6 +48,7 @@ export class CombatTrackerComponent implements OnInit {
 
   public characterForm: FormGroup;
   public characters: Participant[] = [];
+  public delayedCharacters: Participant[] = [];
   public expandedCharacter: Participant;
   public displayedColumns: string[] = [
     'position',
@@ -58,6 +60,7 @@ export class CombatTrackerComponent implements OnInit {
   ];
 
   @ViewChild('table') table: MatTable<Element>;
+  @ViewChild('delayTable') delayTable: MatTable<Element>;
 
   constructor(private formBuild: FormBuilder,
               private _cd: ChangeDetectorRef) { }
@@ -80,11 +83,21 @@ export class CombatTrackerComponent implements OnInit {
     });
   }
 
-  public removeCondition(character, condition) {
+  public removeCondition(character: Participant, condition: Condition) {
     condition.active = false;
     character.conditions = character.conditions.filter((obj) => {
       return obj.label !== condition.label;
     });
+
+    if (condition.condition === 'delayed') {
+      this.delayedCharacters = this.delayedCharacters.filter((char) => {
+         return char.characterName !== character.characterName;
+      });
+
+      character.initiative = (this.characters[0].initiative + 1);
+      this.characters.unshift(character);
+      this.table.renderRows();
+    }
   }
 
   public prevTurn() {
@@ -114,8 +127,18 @@ export class CombatTrackerComponent implements OnInit {
   public nextTurn() {
     const actedCharacter = this.characters.shift();
 
-    if (actedCharacter.conditions['delayed']) {
-      this.characters.unshift(actedCharacter);
+    if (actedCharacter.conditions && actedCharacter.conditions.length) {
+      const delayed = actedCharacter.conditions.find((condition) => {
+        return condition.condition === 'delayed';
+      });
+
+      if (delayed) {
+        this.delayedCharacters.push(actedCharacter);
+        this.table.renderRows();
+      } else {
+        this.characters.push(actedCharacter);
+        this.table.renderRows();
+      }
     } else {
       this.characters.push(actedCharacter);
       this.table.renderRows();

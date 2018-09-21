@@ -1,5 +1,74 @@
 <h2>Combat Tracker</h2>
 
+<div class="table-content delayed-table" *ngIf="delayedCharacters.length">
+  <mat-table #delayTable multiTemplateDataRows [dataSource]="delayedCharacters">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef class="col col-1"> No. </mat-header-cell>
+      <mat-cell *matCellDef="let index = dataIndex" class="col col-1"> {{ index + 1 }} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef class="col col-2"> Name </mat-header-cell>
+      <mat-cell *matCellDef="let character" class="col col-2"> {{ character.characterName }} </mat-cell>
+    </ng-container>
+
+    <!-- Initiative Column -->
+    <ng-container matColumnDef="initiative">
+      <mat-header-cell *matHeaderCellDef class="col col-2"> Initiative </mat-header-cell>
+      <mat-cell *matCellDef="let character" class="col col-2"> {{character.initiative }} </mat-cell>
+    </ng-container>
+
+    <!-- Initiative Bonus Column -->
+    <ng-container matColumnDef="initiative bonus">
+      <mat-header-cell *matHeaderCellDef class="col col-2"> Initiative Bonus </mat-header-cell>
+      <mat-cell *matCellDef="let character" class="col col-2"> {{ character.initiativeBonus }} </mat-cell>
+    </ng-container>
+
+    <!-- Conditions Column -->
+    <ng-container matColumnDef="conditions">
+      <mat-header-cell *matHeaderCellDef class="col col-4"> Conditions </mat-header-cell>
+      <mat-cell *matCellDef="let character" class="col col-4">
+        <button mat-icon-button
+                *ngFor="let condition of character.conditions"
+                (click)="stopPropagation($event); removeCondition(character, condition)"
+                [matTooltip]="condition.label">
+          <mat-icon [attr.aria-label]="condition.label">{{ condition.iconName }}</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef class="col col-1"> Delete </mat-header-cell>
+      <mat-cell *matCellDef="let character" class="col col-1"> <mat-icon attr.aria-label="delete" class="delete" (click)="removeParticipant(character)">clear</mat-icon> </mat-cell>
+    </ng-container>
+
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let character;" [attr.colspan]="displayedColumns.length">
+        <div class="character-detail"
+             [@detailExpand]="character === expandedCharacter ? 'expanded' : 'collapsed'">
+          <div class="character-description">
+            <app-conditions [participant]="character"></app-conditions>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let character; columns: displayedColumns"
+             class="character-row"
+             [class.expanded-row]="expandedCharacter === character"
+             (click)="expandedCharacter === character ? expandedCharacter = null : expandedCharacter = character">
+    </mat-row>
+    <mat-row *matRowDef="let row; columns: ['expandedDetail']; let character"
+             class="detail-row"
+             [class.collapsed]="expandedCharacter !== character"></mat-row>
+  </mat-table>
+</div>
+
 <div class="table-content">
 
   <mat-table #table multiTemplateDataRows [dataSource]="characters">
